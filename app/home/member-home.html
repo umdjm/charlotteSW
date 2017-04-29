@@ -1,0 +1,24 @@
+<div class="main">
+    <div class="sidebar">
+
+        <div class="slack-name">
+            <h2>Member Home</h2>
+        </div>
+
+        <div class="my-info">
+            <img class="user-pic" ng-src="{{ memberHomeCtrl.getGravatar(memberHomeCtrl.profile.$id) }}" />
+            <div class="user-info">
+                <div class="user-name">
+                    {{ memberHomeCtrl.profile.displayName }}
+                </div>
+
+                <div class="options">
+                    <a ui-sref="profile">edit profile</a>
+                    /
+                    <a href="#" ng-click="memberHomeCtrl.logout()">logout</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
