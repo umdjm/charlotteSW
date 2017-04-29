@@ -39,6 +39,20 @@ body {
   position:relative;
 }
 
+.sidebar .app-name {
+  background:#3E313C;
+  padding:15px 0px 15px 15px;
+}
+
+.sidebar .app-name h2{
+  color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+
 .sidebar .channel-list .channel a{
   display:block;
   color:rgba(255,255,255,0.6);
