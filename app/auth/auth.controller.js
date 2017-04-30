@@ -9,7 +9,7 @@ angular.module('datenight')
 
         authCtrl.login = function (){
             Auth.$signInWithEmailAndPassword(authCtrl.user.email, authCtrl.user.password).then(function (auth){
-                $state.go('memberHome');
+                $state.go('memberHome.survey');
             }, function (error){
                 authCtrl.error = error;
             });
@@ -17,7 +17,7 @@ angular.module('datenight')
 
         authCtrl.register = function (){
             Auth.$createUserWithEmailAndPassword(authCtrl.user.email, authCtrl.user.password).then(function (user){
-                $state.go('memberHome');
+                $state.go('memberHome.survey');
             }, function (error){
                 authCtrl.error = error;
             });

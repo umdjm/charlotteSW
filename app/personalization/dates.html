@@ -1,0 +1,13 @@
+
+    <h3>
+        Please choose a few date nights that might work for you and your partner
+    </h3>
+
+    <md-datepicker ng-model="datesCtrl.profile.dateOption1" md-placeholder="Date Option #2" md-min-date="datesCtrl.nextWeek" md-max-date="datesCtrl.nextMonth"></md-datepicker>
+
+    <md-datepicker ng-model="datesCtrl.profile.dateOption2" md-placeholder="Date Option #2" md-min-date="datesCtrl.nextWeek" md-max-date="datesCtrl.nextMonth"></md-datepicker>
+
+    <button class="btn btn-default center-block btn-success" ng-click="datesCtrl.updateProfile()">
+        Send to Partner
+    </button>
+

@@ -4,7 +4,8 @@ angular
   .module('datenight', [
     'firebase',
     'angular-md5',
-    'ui.router'
+    'ui.router',
+      'ngMaterial'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -14,7 +15,7 @@ angular
           resolve: {
               requireNoAuth: function($state, Auth){
                   return Auth.$requireSignIn().then(function(auth){
-                      $state.go('memberHome');
+                      $state.go('memberHome.survey');
                   }, function(error){
                       return;
                   });
@@ -28,7 +29,7 @@ angular
             resolve: {
                 requireNoAuth: function($state, Auth){
                     return Auth.$requireSignIn().then(function(auth){
-                        $state.go('memberHome');
+                        $state.go('memberHome.survey');
                     }, function(error){
                         return;
                     });
@@ -42,7 +43,7 @@ angular
             resolve: {
                 requireNoAuth: function($state, Auth){
                     return Auth.$requireSignIn().then(function(auth){
-                        $state.go('memberHome');
+                        $state.go('memberHome.survey');
                     }, function(error){
                         return;
                     });
@@ -56,7 +57,7 @@ angular
             resolve: {
                 auth: function($state, Users, Auth){
                     return Auth.$requireSignIn().catch(function(){
-                        $state.go('memberHome');
+                        $state.go('memberHome.survey');
                     });
                 },
                 profile: function(Users, Auth){
@@ -85,9 +86,42 @@ angular
                     });
                 }
             }
+        })
+        .state('memberHome.survey', {
+            url: '/survey',
+            templateUrl: 'personalization/survey.html',
+            controller: 'SurveyCtrl as surveyCtrl',
+            resolve: {
+                profile: function ($state, Auth, Users){
+                    return Auth.$requireSignIn().then(function(auth){
+                        return Users.getProfile(auth.uid).$loaded().then(function (profile){
+                            return profile;
+                        });
+                    }, function(error){
+                        $state.go('home');
+                    });
+                }
+            }
+        })
+        .state('memberHome.dates', {
+            url: '/dates',
+            templateUrl: 'personalization/dates.html',
+            controller: 'DatesCtrl as datesCtrl',
+            resolve: {
+                profile: function ($state, Auth, Users){
+                    return Auth.$requireSignIn().then(function(auth){
+                        return Users.getProfile(auth.uid).$loaded().then(function (profile){
+                            return profile;
+                        });
+                    }, function(error){
+                        $state.go('home');
+                    });
+                }
+            }
         });
 
-    $urlRouterProvider.otherwise('/');
+
+      $urlRouterProvider.otherwise('/');
   })
     .config(function(){
         var config = {

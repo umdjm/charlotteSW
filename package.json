@@ -1,7 +1,9 @@
 {
   "name": "charlotteSW",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular-material": "^1.1.4"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
